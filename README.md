@@ -6,7 +6,7 @@ This was my tenth project at Origin Code Academy. This mortgage calculator was m
 ![](mortgage-calculator.png)
 
 ## Background
-The calculations in this React app were created by using the following mathematical formula where M is the monthly payment, P is the principal, r is the monthly interest rate (calculated by dividing the annual interest rate by 12), and n is the number of payments, in this case, the number of loan paying months (either 180 [15 years] or 360 [30 years]):
+The calculations in this React app were created by using the following mathematical formula; where M is the monthly payment, P is the principal, r is the monthly interest rate (calculated by dividing the annual interest rate by 12), and n is the number of payments, in this case, the number of loan paying months (either 180 [15 years] or 360 [30 years]):
 
 ![](mortgage-calculator-formula.png)
 
