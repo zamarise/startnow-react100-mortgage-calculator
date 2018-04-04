@@ -68,6 +68,7 @@ export default class App extends Component {
             </label>
             <div className='col-sm-10'>
               <input
+                name='balance'
                 type='number'
                 className='form-control'
                 value={ this.state.loanBalance }
@@ -82,6 +83,7 @@ export default class App extends Component {
             </label>
             <div className='col-sm-10'>
               <input
+                name='rate'
                 type='number'
                 step='0.01'
                 className='form-control'
@@ -96,7 +98,12 @@ export default class App extends Component {
               Loan Term (years)
             </label>
             <div className='col-sm-10'>
-              <select className='form-control' value={ this.state.value } onChange={ this.handleTerm }>
+              <select
+                name='term'
+                className='form-control'
+                value={ this.state.value }
+                onChange={ this.handleTerm }
+              >
                 <option value='0'>Choose Loan Term (years)</option>
                 <option value='180'>15</option>
                 <option value='360'>30</option>
@@ -106,6 +113,7 @@ export default class App extends Component {
           <div className='form-group'>
             <div className='col-md-offset-2 col-md-10'>
               <button
+                name='submit'
                 type='button'
                 className='btn btn-default btn-block btn-success'
                 onClick={ this.handleCalculation }
