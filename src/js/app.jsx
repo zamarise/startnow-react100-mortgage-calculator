@@ -5,34 +5,23 @@ export default class App extends Component {
     super(props);
 
     this.state = {
-      loanBalance: null,
-      interestRate: null,
-      value: null
+      balance: '',
+      rate: ''
     };
 
-    this.handleLoanBalance = this.handleLoanBalance.bind(this);
-    this.handleInterestRate = this.handleInterestRate.bind(this);
-    this.handleTerm = this.handleTerm.bind(this);
-    this.handleCalculation = this.handleCalculation.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleLoanBalance(event) {
-    this.setState({ loanBalance: event.target.value });
+  handleChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
   }
 
-  handleInterestRate(event) {
-    this.setState({ interestRate: event.target.value });
-  }
-
-  handleTerm(event) {
-    this.setState({ value: event.target.value });
-  }
-
-  handleCalculation() {
-    const multR = this.state.interestRate * 0.01;
+  handleSubmit() {
+    const multR = this.state.rate * 0.01;
     const r = multR / 12;
-    const p = this.state.loanBalance;
-    const n = this.state.value;
+    const p = this.state.balance;
+    const n = this.state.term;
     const rOne = 1 + r;
     const exp = Math.pow(rOne, n);
     const top = exp * r;
@@ -71,8 +60,8 @@ export default class App extends Component {
                 name='balance'
                 type='number'
                 className='form-control'
-                value={ this.state.loanBalance }
-                onChange={ this.handleLoanBalance }
+                value={ this.state.balance }
+                onChange={ this.handleChange }
                 placeholder='Enter Loan Balance'
               />
             </div>
@@ -87,8 +76,8 @@ export default class App extends Component {
                 type='number'
                 step='0.01'
                 className='form-control'
-                value={ this.state.interestRate }
-                onChange={ this.handleInterestRate }
+                value={ this.state.rate }
+                onChange={ this.handleChange }
                 placeholder='Enter Interest Rate'
               />
             </div>
@@ -98,12 +87,7 @@ export default class App extends Component {
               Loan Term (years)
             </label>
             <div className='col-sm-10'>
-              <select
-                name='term'
-                className='form-control'
-                value={ this.state.value }
-                onChange={ this.handleTerm }
-              >
+              <select name='term' className='form-control' onChange={ this.handleChange }>
                 <option value='0'>Choose Loan Term (years)</option>
                 <option value='180'>15</option>
                 <option value='360'>30</option>
@@ -116,7 +100,7 @@ export default class App extends Component {
                 name='submit'
                 type='button'
                 className='btn btn-default btn-block btn-success'
-                onClick={ this.handleCalculation }
+                onClick={ this.handleSubmit }
               >
                 Calculate
               </button>
